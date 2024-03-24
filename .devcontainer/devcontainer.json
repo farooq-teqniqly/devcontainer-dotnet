@@ -36,7 +36,8 @@
         "ms-azuretools.vscode-docker",
         "ms-dotnettools.csdevkit",
         "arcticicestudio.nord-visual-studio-code",
-        "pkief.material-icon-theme"
+        "pkief.material-icon-theme",
+        "patcx.vscode-nuget-gallery"
       ]
     }
   }
