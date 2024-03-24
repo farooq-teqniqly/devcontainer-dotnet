@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build-push:
+  build-push-container:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -23,3 +23,6 @@ jobs:
 
       - name: Build dev container
         run: devcontainer build --image-name dotnet-devcontainer --workspace-folder .
+
+      - name: Push dev container to Azure Container Registry
+        run: docker push ${{ secrets.REGISTRY_URL }}/dotnet-devcontainer
