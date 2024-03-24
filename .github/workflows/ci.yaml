@@ -14,6 +14,5 @@ jobs:
           login-server: ${{ secrets.REGISTRY_URL }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      - run: |
-          docker build -t ${{ secrets.REGISTRY_URL }}/dotnet-dev-container:${{ github.sha }} ./.devcontainer
-          docker push ${{ secrets.REGISTRY_URL }}/dotnet-dev-container:${{ github.sha }}
+      - name: Install dev-container-cli
+        run: npm install -g "@vscode/dev-container-cli"
