@@ -1,4 +1,4 @@
-FROM fmbaseacr.azurecr.io/dotnet-devcontainer:latest
+FROM mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm
 
 # Install SQL Tools: SQLPackage and sqlcmd
 COPY mssql/installSQLtools.sh installSQLtools.sh
