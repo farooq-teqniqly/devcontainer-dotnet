@@ -16,3 +16,5 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - name: Install dev-container-cli
         run: npm install -g "@vscode/dev-container-cli"
+      - name: Test dev-container-cli
+        run: devcontainer --help
