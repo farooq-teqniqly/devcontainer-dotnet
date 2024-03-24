@@ -15,5 +15,5 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: |
-          docker build . -t ${{ secrets.REGISTRY_URL }}/dotnet-dev-container:${{ github.sha }}
+          docker build -f ../../.devcontainer/Dockerfile -t ${{ secrets.REGISTRY_URL }}/dotnet-dev-container:${{ github.sha }}
           docker push ${{ secrets.REGISTRY_URL }}/dotnet-dev-container:${{ github.sha }}
