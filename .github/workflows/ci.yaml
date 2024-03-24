@@ -17,4 +17,4 @@ jobs:
       - name: Install dev-container-cli
         run: npm install -g "@vscode/dev-container-cli"
       - name: Test dev-container-cli
-        run: devcontainer build --image-name dotnet-devcontainer
+        run: devcontainer build --image-name dotnet-devcontainer --workspace-folder ../.devcontainer
