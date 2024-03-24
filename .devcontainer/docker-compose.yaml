@@ -2,6 +2,7 @@ version: "3"
 
 services:
   devcontainer:
+    image: fmbaseacr.azurecr.io/dotnet-devcontainer
     build:
       context: .
       dockerfile: Dockerfile
