@@ -4,7 +4,8 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "*/.devcontainer/**/*"
+      - ".devcontainer/**/*"
+      - ".github/**/*"
 
 jobs:
   build-push-dev-container:
