@@ -3,10 +3,14 @@ name: Devcontainer Image CI
 on:
   push:
     branches: ["main"]
+    paths:
+      - "*/.devcontainer/**/*"
 
 jobs:
-  build-push-container:
+  build-push-dev-container:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: ${{ secrets.REGISTRY_URL }}/dotnet-devcontainer
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -18,11 +22,11 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Install dev-container-cli
+      - name: Install dev container CLI
         run: npm install -g "@vscode/dev-container-cli"
 
       - name: Build dev container
-        run: devcontainer build --image-name ${{ secrets.REGISTRY_URL }}/dotnet-devcontainer --workspace-folder .
+        run: devcontainer build --no-cache --image-name ${{ env.IMAGE_NAME }} --workspace-folder .
 
       - name: Push dev container to Azure Container Registry
-        run: docker push ${{ secrets.REGISTRY_URL }}/dotnet-devcontainer
+        run: docker push ${{ env.IMAGE_NAME }}
