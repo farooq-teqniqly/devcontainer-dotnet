@@ -8,13 +8,18 @@ jobs:
   build-push:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Log in to Azure Container Registry
         uses: azure/docker-login@v1
         with:
           login-server: ${{ secrets.REGISTRY_URL }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+
       - name: Install dev-container-cli
         run: npm install -g "@vscode/dev-container-cli"
-      - name: Test dev-container-cli
-        run: devcontainer build --image-name dotnet-devcontainer --workspace-folder ../
+
+      - name: Build dev container
+        run: devcontainer build --image-name dotnet-devcontainer --workspace-folder .
